@@ -49,7 +49,7 @@ npm install
 
 5. Add a local **.env** file and make sure that the **database** variables are correct.
 
-   - DB_HOST = 'localhost'
+   - DB_HOST = localhost
    - DB_PW = '**your-local-database-password**'
    - DB_USER = '**your-local-database-username**' (usually "root")
    - DB_NAME = '**your-local-database-name**' (example: "recipe_db")
