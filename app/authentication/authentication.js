@@ -30,22 +30,22 @@ authenticate = async (req, res, require = true) => {
         .catch((error) => {
           console.log(error);
         });
-      if (user != null) {
-        let hash = await hashPassword(password, user.salt);
-        if (Buffer.compare(user.password, hash) !== 0) {
-          return res.status(401).send({
-            message: "Invalid password!",
-          });
-        }
-        return {
-          type: "credentials",
-          userId: user.id,
-        };
-      } else {
+      if (user == null) {
         return res.status(401).send({
           message: "User not found!",
         });
       }
+
+      let hash = await hashPassword(password, user.salt);
+      if (Buffer.compare(user.password, hash) !== 0) {
+        return res.status(401).send({
+          message: "Invalid password!",
+        });
+      }
+      return {
+        type: "credentials",
+        userId: user.id,
+      };
     }
     if (
       auth.startsWith("Bearer ") &&
