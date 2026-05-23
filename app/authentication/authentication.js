@@ -41,11 +41,11 @@ authenticate = async (req, res, require = true) => {
           type: "credentials",
           userId: user.id,
         };
-      } else {
-        return res.status(401).send({
-          message: "User not found!",
-        });
       }
+      return res.status(401).send({
+        message: "User not found!",
+      });
+
     }
     if (
       auth.startsWith("Bearer ") &&
